@@ -2,7 +2,10 @@
 .container-fluid{
     width: 100%;
 }
-
+.container-fluid .no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  }
 
 .main_page .my_cont {
     background: white
