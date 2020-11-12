@@ -1,0 +1,74 @@
+{% extends 'glowny.html' %}
+{% load static %}
+{% block tytul %} List of weapons {% endblock %}
+
+{% block strona %}
+
+    <div class="jumbotron bg-transparent">
+
+        {% if user.is_authenticated %}
+            <h1 class="display-4">Hello {{ user.username }}</h1>
+            <a href="{% url 'logout'  %}" class="btn btn-primary">Logout <i class="fas fa-sign-out-alt"></i></a>
+        {% else %}
+            <h1 class="display-4">Hello Survivor</h1>
+            <a href="{% url 'login' %}" class="btn btn-primary"> Login <i class="fas fa-arrow-circle-down"></i></a>
+        {% endif %}
+    </div>
+
+<div class="return_button" ><a href="{% url 'all_weapons' %}" class="btn btn-secondary ">Return <i class="fas fa-undo-alt"></i></a></div>
+
+
+<ul class="list-group">
+    {% for weapon in weapons %}
+        <li class="list-group-item">
+            <div class="card mb-3" style="width: 1000px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="/media/{{weapon.picture}}" class="weapon-picture" style="height: 100%; width:120%">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'weapon_page' weapon.id  %}" class="btn btn-primary">{{ weapon.name }}</a></h5>
+                        <p class="card-text">Buy price: {{ weapon.buy_price }}</p>
+                        <p class="card-text">Sell price: {{ weapon.sell_price }}</p>
+                        <p class="card-text">Cal: {{ weapon.cal }}</p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="{% url 'edit_weapon' weapon.id %}"><i class="fas fa-1x fa-wrench"></i></a>
+                    <a href="{% url 'delete_weapon' weapon.id %}"><i class="fas fa-1x fa-trash-alt"></i></a>
+                </div>
+
+
+
+              </div>
+            </div>
+        </li>
+    {% endfor %}
+
+</ul>
+
+
+
+
+
+{% endblock %}
+
+
+           <div class="container card bg-dark text-white">
+            <img src="/static/images/barret-m82.png" class="card-img" alt="...">
+            <div class="row card-img-overlay"">
+                <div class="col-sm-9 card-title">
+                  {{ weapon.name }}
+                    <a href="{% url 'edit_weapon' weapon.id %}"><i class="fas fa-2x fa-wrench"></i></a>
+                    <a href="{% url 'delete_weapon' weapon.id %}"><i class="fas fa-2x fa-trash-alt"></i></a>
+                  <div class="row">
+                    <div class="col-8 col-sm-6 card-text">
+                      {{ weapon.sell_price }}
+                    </div>
+                    <div class="col-4 col-sm-6 card-text">
+                      {{ weapon.cal }}
+                    </div>
+                  </div>
+                </div>
+              </div>

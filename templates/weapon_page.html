@@ -1,0 +1,42 @@
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+{% block tytul %} Weapon page {% endblock %}
+
+{% block strona %}
+
+
+<div class="return_button" ><a href="{% url 'all_weapons' %}" class="btn btn-secondary ">Return <i class="fas fa-undo-alt"></i></a></div>
+<ul class="list-group">
+
+    <div class="dropdown show text-center container justify-content-center">
+      <a class="btn btn-secondary dropdown-toggle btn-lg btn-block" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ weapon.name }}
+      </a>
+
+      <div class="dropdown-menu btn-lg btn-block text-center" style="width:1110px"; aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item btn-lg btn-block text-center" href="#">Buy price: {{ weapon.buy_price }}</a>
+            <a class="dropdown-item btn-lg btn-block text-center" href="#">Sell price: {{ weapon.buy_price }}</a>
+            <a class="dropdown-item btn-lg btn-block text-center" href="#">Ammo: {{ weapon.cal }}</a>
+            <div class="dropdown-divider border bg-dark p-1"></div>
+            <a class="dropdown-item btn-lg btn-block text-center" href="#">Attachable scopes</a>
+            <div class="dropdown-divider border bg-dark"></div>
+          {% for scope in all_scopes %}
+        <a class="dropdown-item btn-block text-center" href="{% url 'scope_page' scope.id %}"> {{ scope }}</a>
+
+          {% endfor %}
+      </div>
+    </div>
+
+
+</ul>
+
+
+
+{% endblock %}
+
+  <div class="card container justify-content-center" style="width: 32rem;">
+          <div class="card-body">
+              {{ weapon }}
+              {{ weapon.scopes }}
+        </div>
+    </div>

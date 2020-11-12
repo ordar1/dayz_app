@@ -1,0 +1,24 @@
+var bk_results = {
+ "campaigns": [
+  {
+    "campaign": 502802,
+    "timestamp": 1605005565,
+    "categories": [
+    {
+     "categoryID": 1360684,
+     "timestamp": 1605005290
+    }
+    ]
+  },
+  {
+    "campaign": 505168,
+    "timestamp": 1605005565,
+    "categories": [
+    {
+     "categoryID": 1360684,
+     "timestamp": 1605005290
+    }
+    ]
+  }
+ ]
+};

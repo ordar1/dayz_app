@@ -1,0 +1,21 @@
+{% extends 'glowny.html' %}
+
+{% block tytul %} Confirm {% endblock %}
+
+{% block strona %}
+
+
+    <div class="card" style="width: 32rem;">
+        <div class="card-body">
+
+            <h5 class="card-title">Do you really want to delete "{{ weapon.name}}"?</h5>
+        <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete weapon</button>
+        </form>
+        </div>
+    </div>
+
+        <a href="{% url 'all_weapons' %}" class="btn btn-secondary">Return <i class="fas fa-undo-alt"></i></a>
+
+{% endblock %}

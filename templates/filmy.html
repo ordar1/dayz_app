@@ -1,0 +1,629 @@
+{% extends 'glowny.html' %}
+{% load static %}
+{% block tytul %} Landing page {% endblock %}
+
+
+{% block strona %}
+
+
+<body class="main_page">
+    <div class="container-fluid px-0">
+            <div class="row">
+                    <div class="fixed-top">
+                        <nav id="navbar-example2" class="navbar navbar-light bg-light">
+                            <div class="bg-transparent">
+                                <div class="my-auto">
+
+                                    {% if user.is_authenticated %}
+                                    <a href="#home">
+                                        <h1 class="display-4">Hello {{ user.username }}</h1>
+                                    </a>
+                                        <a href="{% url 'logout'  %}" class="btn btn-primary">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                    {% else %}
+                                        <a href="#home">
+                                            <h1 class="display-4">Hello Survivor</h1>
+                                        </a>
+                                        <a href="{% url 'login' %}" class="btn btn-primary"> Login <i class="fas fa-arrow-circle-down"></i></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <ul class="nav nav-pills">
+                            <li class="nav-item px-3">
+                              <a class="nav-link btn btn-primary" href="#weapon_cat">Weapon categories</a>
+                            </li>
+                                <li class="nav-item px-3">
+                              <a class="nav-link btn btn-primary" href="#map">Interactive map</a>
+                            </li>
+                                <li class="nav-item px-3">
+                              <a class="nav-link btn btn-primary" href="#ammo_table">Ammo table</a>
+                            </li>
+                            </ul>
+                          <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                          </form>
+                        </nav>
+                    </div>
+                <div class="col-lg" id="home">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex align-items-center justify-content-center min-vh-90">
+                                <img src="{% static "images/dayz-2.jpg" %}" class="d-block mw-100" alt="...">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex align-items-center justify-content-center min-vh-90">
+                                <img src="{% static "images/dayz-1.jpg" %}" class="d-block mw-100" alt="...">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex align-items-center justify-content-center min-vh-90">
+                                <img src="{% static "images/dayz-3.jpg" %}" class="d-block mw-100" alt="...">
+                            </div>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+<div class="container-fluid px-0 my_cont">
+
+    <div id="weapon_cat" data-spy="scroll">
+    </div>
+    <div class="row">
+        <div class="col-sm middle" style="height:150px">
+        </div>
+    </div>
+            <div class="jumbotron text-center display-4">
+                Weapon categories
+            </div>
+    <div class="row">
+        <div class="col-lg test_1 position: relative overflow-y: scroll" style="height: 800px">
+
+            <ul class="nav nav-tabs nav-fill hello" id="myTab" role="tablist">
+              <li class="nav-item">
+                  <a class="nav-link active" id="assaults-tab" data-toggle="tab" href="#assaults" role="tab" aria-controls="assaults" aria-selected="false"><h2>Assault rifles</h2></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><h2>Machine guns</h2></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><h2>Shotguns</h2></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="contacts-tab" data-toggle="tab" href="#contacts" role="tab" aria-controls="contacts" aria-selected="false"><h2>Sniper rifles</h2></a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pistols-tab" data-toggle="tab" href="#pistols" role="tab" aria-controls="pistols" aria-selected="false"><h2>Pistols</h2></a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rifles-tab" data-toggle="tab" href="#rifles" role="tab" aria-controls="rifles" aria-selected="false"><h2>Rifles</h2></a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="submachines-tab" data-toggle="tab" href="#submachines" role="tab" aria-controls="submachines" aria-selected="false"><h2>Submachine guns</h2></a>
+              </li>
+
+            </ul>
+
+                <div class="tab-content" id="myTabContent">
+
+
+                        <div class="tab-pane fade show active" id="assaults" role="tabpanel" aria-labelledby="assaults-tab">
+
+                            <div class="card">
+                                  <div class="card-body">
+                                   <ul class="list-group">
+                                       <h1>Assault rifles</h1>
+                                        {% for assault_rifle in assault_rifles %}
+
+                                          <a class="btn btn-primary" data-toggle="collapse" href="#{{ assault_rifle.name }}" role="button" aria-expanded="false" aria-controls="{{ assault_rifle }}">
+                                              <h3>{{ assault_rifle.name }}</h3>
+                                          </a>
+                                        <div class="collapse" id="{{ assault_rifle.name }}">
+                                            <div class="card card-body">
+                                                <a>Buy price: <h4>{{ assault_rifle.buy_price }}</h4></a>
+                                                <a>Sell price: <h4>{{ assault_rifle.sell_price }}</h4></a>
+                                                <a>Ammo: <h4>{{ assault_rifle.cal }}</h4></a>
+                                                <a>Attachable scopes</a>
+                                                {% for scope in assault_rifle.ming %}
+                                                <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                {% endfor %}
+                                          </div>
+                                        </div>
+                                       {% endfor %}
+                                   </ul>
+                                  </div>
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="card">
+                                      <div class="card-body">
+                                       <ul class="list-group">
+                                           <h1>Machine guns</h1>
+                                            {% for machine_gun in machine_guns %}
+
+                                              <a class="btn btn-primary" data-toggle="collapse" href="#{{ machine_gun.name }}" role="button" aria-expanded="false" aria-controls="{{ machine_gun.name }}">
+                                                  <h3>{{ machine_gun.name }}</h3>
+                                              </a>
+                                            <div class="collapse" id="{{ machine_gun.name }}">
+                                                <div class="card card-body">
+                                                    <a>Buy price: <h4>{{ machine_gun.buy_price }}</h4> </a>
+                                                    <a>Sell price: <h4>{{ machine_gun.sell_price }}</h4> </a>
+                                                    <a>Ammo: <h4>{{ machine_gun.cal }}</h4> </a>
+                                                    <a>Attachable scopes</a>
+                                                    {% for scope in machine_gun.ming %}
+                                                    <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                    {% endfor %}
+                                              </div>
+                                            </div>
+                                           {% endfor %}
+                                       </ul>
+                                      </div>
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                    <div class="card">
+                                      <div class="card-body">
+                                       <ul class="list-group">
+                                           <h1>Shotguns</h1>
+                                            {% for shotgun in shotguns %}
+
+                                              <a class="btn btn-primary" data-toggle="collapse" href="#{{ shotgun.name }}" role="button" aria-expanded="false" aria-controls="{{ shotgun.name }}">
+                                                  <h3>{{ shotgun.name }}</h3>
+                                              </a>
+                                            <div class="collapse" id="{{ shotgun.name }}">
+                                                <div class="card card-body">
+                                                    <a>Buy price: <h4>{{ shotgun.buy_price }}</h4></a>
+                                                    <a>Sell price: <h4>{{ shotgun.sell_price }}</h4></a>
+                                                    <a>Ammo: <h4>{{ shotgun.cal }}</h4></a>
+                                                    <a>Attachable scopes</a>
+                                                    {% for scope in shotgun.ming %}
+                                                    <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                    {% endfor %}
+                                              </div>
+                                            </div>
+                                           {% endfor %}
+                                       </ul>
+                                      </div>
+
+
+
+                                    </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                                <div class="card">
+                                      <div class="card-body">
+                                       <ul class="list-group">
+                                           <h1>Sniper rifles</h1>
+                                            {% for weapon in weapons %}
+
+                                              <a class="btn btn-primary" data-toggle="collapse" href="#{{ weapon.name }}" role="button" aria-expanded="false" aria-controls="{{ weapon }}">
+                                                  <h3>{{ weapon.name }}</h3>
+                                              </a>
+                                            <div class="collapse" id="{{ weapon.name }}">
+                                                <div class="card card-body">
+                                                    <a>Buy price: <h4>{{ weapon.buy_price }}</h4></a>
+                                                    <a>Sell price: <h4>{{ weapon.sell_price }}</h4></a>
+                                                    <a>Ammo: <h4>{{ weapon.cal }}</h4></a>
+                                                    <a>Attachable scopes</a>
+                                                    {% for scope in weapon.ming %}
+                                                    <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                    {% endfor %}
+                                              </div>
+                                            </div>
+                                           {% endfor %}
+                                       </ul>
+                                      </div>
+
+
+
+
+                                </div>
+                            </div>
+                                    <div class="tab-pane fade" id="pistols" role="tabpanel" aria-labelledby="pistols-tab">
+                                        <div class="card">
+                                              <div class="card-body">
+                                               <ul class="list-group">
+                                                   <h1>Pistols</h1>
+                                                    {% for pistol in pistols %}
+
+                                                      <a class="btn btn-primary" data-toggle="collapse" href="#{{ pistol.name }}" role="button" aria-expanded="false" aria-controls="{{ pistol }}">
+                                                          <h3>{{ pistol.name }}</h3>
+                                                      </a>
+                                                    <div class="collapse" id="{{ pistol.name }}">
+                                                        <div class="card card-body">
+                                                            <a>Buy price: <h4>{{ pistol.buy_price }}</h4></a>
+                                                            <a>Sell price: <h4>{{ pistol.sell_price }}</h4></a>
+                                                            <a>Ammo: <h4>{{ pistol.cal }}</h4></a>
+                                                            <a>Attachable scopes</a>
+                                                            {% for scope in pistol.ming %}
+                                                            <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                            {% endfor %}
+                                                      </div>
+                                                    </div>
+                                                   {% endfor %}
+                                               </ul>
+                                              </div>
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="rifles" role="tabpanel" aria-labelledby="rifles-tab">
+                                        <div class="card">
+                                              <div class="card-body">
+                                               <ul class="list-group">
+                                                   <h1>Rifles</h1>
+                                                    {% for rifle in rifles %}
+
+                                                      <a class="btn btn-primary" data-toggle="collapse" href="#{{ rifle.name }}" role="button" aria-expanded="false" aria-controls="{{ rifle }}">
+                                                          <h3>{{ rifle.name }}</h3>
+                                                      </a>
+                                                    <div class="collapse" id="{{ rifle.name }}">
+                                                        <div class="card card-body">
+                                                            <a>Buy price: <h4>{{ rifle.buy_price }}</h4></a>
+                                                            <a>Sell price: <h4>{{ rifle.sell_price }}</h4></a>
+                                                            <a>Ammo: <h4>{{ rifle.cal }}</h4></a>
+                                                            <a>Attachable scopes</a>
+                                                            {% for scope in rifle.ming %}
+                                                            <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                            {% endfor %}
+                                                      </div>
+                                                    </div>
+                                                   {% endfor %}
+                                               </ul>
+                                              </div>
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="submachines" role="tabpanel" aria-labelledby="submachines-tab">
+                                        <div class="card">
+                                              <div class="card-body">
+                                               <ul class="list-group">
+                                                   <h1>Submachine guns</h1>
+                                                    {% for submachine in submachines %}
+
+                                                      <a class="btn btn-primary" data-toggle="collapse" href="#{{ submachine.name }}" role="button" aria-expanded="false" aria-controls="{{ submachine }}">
+                                                          <h3>{{ submachine.name }}</h3>
+                                                      </a>
+                                                    <div class="collapse" id="{{ submachine.name }}">
+                                                        <div class="card card-body">
+                                                            <a>Buy price: <h4>{{ submachine.buy_price }}</h4></a>
+                                                            <a>Sell price: <h4>{{ submachine.sell_price }}</h4></a>
+                                                            <a>Ammo: <h4>{{ submachine.cal }}</h4></a>
+                                                            <a>Attachable scopes</a>
+                                                            {% for scope in submachine.ming %}
+                                                            <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
+                                                            {% endfor %}
+                                                      </div>
+                                                    </div>
+                                                   {% endfor %}
+                                               </ul>
+                                              </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                </div>
+            </div>
+    </div>
+
+
+</div>
+        <div id="map" data-spy="scroll">
+        </div>
+            <div class="row">
+                <div class="col-sm middle" style="height:150px">
+                </div>
+            </div>
+
+    <div class="jumbotron text-center display-4">
+        Interactive map of Chernarus
+    </div>
+        <div class="text-center container justify-content-center container-fluid px-0">
+            <div class="row">
+
+                <div class="col-lg last" style="height: 800px padding: 50px">
+                    <p>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Show/hide
+                      </button>
+                    </p>
+                    <div class="row">
+                        <div class="col-sm middle" style="height:150px">
+                        </div>
+                    </div>
+
+                    <div class="collapse hello_2" id="collapseExample">
+                        <div class="container text-center">
+                              <div class="card card-body">
+                                  <iframe src=https://dayz.ginfo.gg/chernarusplussatmap/serverlogs/#c=-18;-54;4 height="800"></iframe>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-sm middle" style="height:150px">
+        </div>
+    </div>
+        <div id="ammo_table" data-spy="scroll">
+        </div>
+            <div class="row">
+                <div class="col-sm middle" style="height:150px">
+                </div>
+            </div>
+    <div class="jumbotron text-center display-4">
+        Ammo table
+    </div>
+    <div class="text-center container justify-content-center container-fluid px-0">
+        <div class="row">
+            <div class="col-lg last" style="height: 800px padding: 50px">
+                <style type="text/css">
+                    table.tableizer-table {
+                        font-size: 12px;
+                        border: 1px solid #CCC;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+                    .tableizer-table td {
+                        padding: 4px;
+                        margin: 3px;
+                        border: 1px solid #CCC;
+                    }
+                    .tableizer-table th {
+                        background-color: #092B4D;
+                        color: #FFF;
+                        font-weight: bold;
+                    }
+                </style>
+                <table class="tableizer-table">
+                <thead><tr class="tableizer-firstrow"><th>DEFAULT</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody>
+                 <tr><td>Class Name</td><td>Description</td><td>ProjectilesCount</td><td>Quantity</td><td>InitSpeed</td><td>New HealthDamage</td><td>New BloodDamage</td><td>New ShockDamage</td><td>HealthDamage</td><td>BloodDamage</td><td>ShockDamage</td></tr>
+                 <tr><td>Ammo_12gaPellets</td><td>Shotgun cartridges 12 gauge</td><td>8</td><td>10</td><td>370</td><td>34</td><td>100</td><td>33</td><td>34</td><td>100</td><td>33</td></tr>
+                 <tr><td>Ammo_12gaRubberSlug</td><td>12 gauge rubber slugs</td><td>1</td><td>10</td><td>260</td><td>0</td><td>0</td><td>75</td><td>0</td><td>0</td><td>75</td></tr>
+                 <tr><td>Ammo_12gaSlug</td><td>12 gauge rifled rounds</td><td>1</td><td>10</td><td>420</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                 <tr><td>Ammo_22</td><td>.22 LR cartridges</td><td>1</td><td>50</td><td>330</td><td>18</td><td>100</td><td>25</td><td>18</td><td>100</td><td>25</td></tr>
+                 <tr><td>Ammo_308Win</td><td>.308 Winchester Rounds</td><td>1</td><td>20</td><td>740</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                 <tr><td>Ammo_308WinTracer</td><td>.308 Winchester Tracer Rounds</td><td>1</td><td>20</td><td>740</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                 <tr><td>Ammo_357</td><td>.357 Rounds</td><td>1</td><td>20</td><td>382,6</td><td>80</td><td>100</td><td>66</td><td>105,9</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_380</td><td>.380 ACP Rounds</td><td>1</td><td>35</td><td>290</td><td>21</td><td>100</td><td>33</td><td>21</td><td>100</td><td>33</td></tr>
+                 <tr><td>Ammo_45ACP</td><td>.45 ACP Rounds</td><td>1</td><td>25</td><td>260</td><td>34</td><td>100</td><td>33</td><td>34</td><td>100</td><td>33</td></tr>
+                 <tr><td>Ammo_545x39</td><td>5.45x39 mm Rounds</td><td>1</td><td>20</td><td>880</td><td>47</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_545x39Tracer</td><td>5.45x39 mm Tracer Rounds </td><td>1</td><td>20</td><td>880</td><td>47</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_556x45</td><td>5.56x45 mm Rounds</td><td>1</td><td>20</td><td>1000</td><td>55</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_556x45Tracer</td><td>5.56x45 mm Tracer Rounds</td><td>1</td><td>20</td><td>1000</td><td>55</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_762x39</td><td>7.62x39 mm Rounds</td><td>1</td><td>20</td><td>740</td><td>66</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_762x39Tracer</td><td>7.62x39 mm Tracer Rounds</td><td>1</td><td>20</td><td>740</td><td>66</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_762x54</td><td>7.62x54 mm R Cartridges</td><td>1</td><td>20</td><td>790</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                 <tr><td>Ammo_762x54Tracer</td><td>7.62x54 mm R Tracer cartridges</td><td>1</td><td>20</td><td>790</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                 <tr><td>Ammo_9x19</td><td>9x19 mm Cartridges</td><td>1</td><td>25</td><td>360</td><td>26</td><td>100</td><td>33</td><td>26</td><td>100</td><td>33</td></tr>
+                 <tr><td>Ammo_9x39</td><td>9x39 mm Cartridges</td><td>1</td><td>20</td><td>320</td><td>60</td><td>100</td><td>66</td><td>95</td><td>100</td><td>66</td></tr>
+                 <tr><td>Ammo_9x39AP</td><td>9x39 mm Armor-piercing cartridges </td><td>1</td><td>20</td><td>320</td><td>100</td><td>100</td><td>66</td><td>95</td><td>100</td><td>66</td></tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+<div id="fat" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+{% static "images/background_2.jpg" %}
+{% static "images/background_2.jpg" %}
+{% static "images/background_2.jpg" %}
+
+
+    <div class="row">
+        <div class="col-sm-2">
+                <div class="row pb-2">
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                          <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Sniper rifles</h5>
+                                <p class="card-text">
+                                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#snipers" aria-expanded="false" aria-controls="shotguns">
+                                    Show/Hide
+                                  </button>
+                                </p>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row pb-2">
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                          <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Shotguns</h5>
+                                <p class="card-text">
+                                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#shotguns" aria-expanded="false" aria-controls="snipers">
+                                    Show/Hide
+                                  </button>
+                                </p>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row pb-2">
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                          <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+ <div class="col-sm-10">
+            <div class="row">
+                    <div class="col-sm">
+                        <div class="collapse" id="snipers">
+                            <div class="card">
+                                  <div class="card-body">
+                                   <ul class="list-group">
+                                        {% for weapon in weapons %}
+                                        <div class="dropdown show text-center container justify-content-center">
+                                          <a class="btn dropdown-toggle btn-lg btn-block" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              {{ weapon.name }}
+                                          </a>
+
+                                          <div class="dropdown-menu btn-lg btn-block text-center"; aria-labelledby="dropdownMenuLink">
+                                              <div class="dropdown-divider border bg-dark p-1"></div>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Buy price: {{ weapon.buy_price }}</a>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Sell price: {{ weapon.buy_price }}</a>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Ammo: {{ weapon.cal }}</a>
+                                              <div class="dropdown-divider border bg-dark p-1"></div>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Attachable scopes</a>
+                                              <div class="dropdown-divider border bg-dark"></div>
+                                                {% for scope in weapon.ming %}
+                                                <a class="dropdown-item btn-block text-center" href="{% url 'scope_page' scope.id %}"> {{ scope }} </a>
+                                                {% endfor %}
+                                          </div>
+                                        </div>
+
+                                    {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapse" id="shotguns">
+                            <div class="card">
+                                  <div class="card-body">
+                                   <ul class="list-group">
+                                        {% for shotgun in shotguns %}
+                                        <div class="dropdown show text-center container justify-content-center">
+                                          <a class="btn dropdown-toggle btn-lg btn-block" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              {{ shotgun.name }}
+                                          </a>
+
+                                          <div class="dropdown-menu btn-lg btn-block text-center"; aria-labelledby="dropdownMenuLink">
+                                              <div class="dropdown-divider border bg-dark p-1"></div>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Buy price: {{ shotgun.buy_price }}</a>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Sell price: {{ shotgun.buy_price }}</a>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Ammo: {{ shotgun.cal }}</a>
+                                              <div class="dropdown-divider border bg-dark p-1"></div>
+                                                <a class="dropdown-item btn-lg btn-block text-center" href="#">Attachable scopes</a>
+                                              <div class="dropdown-divider border bg-dark"></div>
+                                                {% for scope in shotgun.ming %}
+                                                <a class="dropdown-item btn-block text-center" href="{% url 'scope_page' scope.id %}"> {{ scope }} </a>
+                                                {% endfor %}
+                                          </div>
+                                        </div>
+
+                                    {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron bg-transparent">
+
+        {% if user.is_authenticated %}
+            <h1 class="display-4">Hello {{ user.username }}</h1>
+            <a href="{% url 'logout'  %}" class="btn btn-primary">Logout <i class="fas fa-sign-out-alt"></i></a>
+        {% else %}
+            <h1 class="display-4">Hello Survivor</h1>
+            <a href="{% url 'login' %}" class="btn btn-primary"> Login <i class="fas fa-arrow-circle-down"></i></a>
+        {% endif %}
+            <a href="{% url 'new_weapon' %}" class="btn btn-primary my_button">Add new weapon to the list <i class="fas fa-1.5x fa-plus-circle"></i></a>
+            <a href="{% url 'landing_page' %}" class="btn btn-secondary container justify-content-center" style="width: 13.9rem">Return <i class="fas fa-undo-alt"></i></a>
+
+    </div>
+
+            <ul class="list-group list-group-horizontal container">
+                    <li class="list-group-item bg-transparent"><a href="{% url 'assault_rifles' %}" class="lets_see btn btn-dark text-wrap" style="width: 200px; height: 200px">Assault rifles</a></li>
+                    <li class="list-group-item bg-transparent"><a href="{% url 'machine_guns' %}" class="btn btn-dark text-wrap" style="width: 200px; height: 200px">Machine guns</a></li>
+                    <li class="list-group-item bg-transparent"><a href="{% url 'shotguns' %}" class="btn btn-dark text-wrap" style="width: 200px; height: 200px">Shotguns</a></li>
+                    <li class="list-group-item bg-transparent"><a href="{% url 'sniper_rifles' %}" class="btn btn-dark text-wrap" style="width: 200px; height: 200px">Sniper rifles</a></li>
+            </ul>
+
+
+
+
+
+
+
+#   {% for weapon in weapons %}
+            <div class="card bg-transparent">
+              <div class="card-body">
+                  <img src="/media/{{weapon.picture}}" class="weapon-picture">
+                  <div class="row">
+                      <div class="col-9">
+                          <h5 class="card-title">{{ weapon.name }}</h5>
+                      </div>
+                      <div class="col-3">
+                          <a href="{% url 'edit_weapon' weapon.id %}"><i class="fas fa-2x fa-wrench"></i></a>
+                          <a href="{% url 'delete_weapon' weapon.id %}"><i class="fas fa-2x fa-trash-alt"></i></a>
+                      </div>
+
+                  </div>
+                  <div class="row">
+                      <p class="card-text opis">{{ weapon.description}}</p>
+                  </div>
+              </div>
+            </div>
+
+        {% endfor %}
+
