@@ -1,11 +1,8 @@
-body {
-    background: white url("\static\images\background.jpg");
+
+.container-fluid{
+    width: 100%;
 }
-.main_page{
-    padding: 0rem;
-    margin:0 auto;
-    background: transparent
-}
+
 
 .main_page .my_cont {
     background: white
@@ -25,10 +22,8 @@ body {
 .main_page .display-4 .display_lol{
     color: white;
 }
-.landing_page{
-    padding: 3rem;
-    background: white url("\static\images\background_2.jpg");
-}.main_page .category_name{
+
+.main_page .category_name{
     color: black;
 }
 .weapon-picture {
@@ -43,54 +38,8 @@ body {
 .display-4 {
     color: white;
 }
-.list-group {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
-.list-group-item {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
 
-.list-group-item > li {
-    display: inline-block;
-    float:none;
-}
 
-.dropdown {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
-.dropdown-menu {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
-.dropdown-item {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
-
-.dropdown-item > li {
-    display: inline-block;
-    float:none;
-}
-
-.return_button {
-  position: relative;
-  top: -10px;
-  left: 865px;
-
-}
 
 .weapon-page {
     float:none;
@@ -100,7 +49,5 @@ body {
 
 }
 
-.p-1 {
-  padding: ($spacer * .25 !important;
-}
+
 
