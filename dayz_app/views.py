@@ -63,6 +63,17 @@ def edit_weapon(request, id):
 
     return render(request, 'weapon_form.html', {'form': form_weapon, 'new': False})
 
+def edit_scope(request, id):
+    scope = get_object_or_404(Scope, pk=id)
+    form_scope = ScopeForm(request.POST or None, instance=scope)
+
+    if form_scope.is_valid():
+        scope.save()
+        return redirect(all_weapons)
+
+    return render(request, 'scope_form.html', {'form': form_scope, 'new': False})
+
+
 @login_required
 def delete_weapon(request, id):
     weapon = get_object_or_404(Weapon, pk=id)

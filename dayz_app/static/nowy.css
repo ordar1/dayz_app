@@ -25,9 +25,6 @@ body {
 .main_page .display-4 .display_lol{
     color: white;
 }
-.landing_page{
-    padding: 3rem;
-    background: white url("\static\images\background_2.jpg");
 }.main_page .category_name{
     color: black;
 }

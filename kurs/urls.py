@@ -23,7 +23,8 @@ from dayz_app.views import landing_page, all_weapons, new_weapon, edit_weapon, d
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('weapons/', include('dayz_app.urls')),
+    path('test/', landing_page),
+    path('landing_page/', include('dayz_app.urls')),
     path('login/', auth_views.LoginView.as_view(), name="login"),
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
     path('landing_page/', all_weapons, name="landing_page"),

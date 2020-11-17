@@ -1,9 +1,52 @@
 {% extends 'glowny.html' %}
 {% load bootstrap %}
+{% load static %}
 {% block tytul %} Scope page {% endblock %}
 
 {% block strona %}
-<div class="return_button" ><a href="{% url 'all_weapons' %}#fat" class="btn btn-secondary ">Return <i class="fas fa-undo-alt"></i></a></div>
+<body style="background-image: url({% static 'images/background_2.jpg' %});">
+    <div class="card container justify-content-center mt-5" style="width: 20rem">
+        <div class="card">
+          <img class="card-img-top" src="#" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ scope }}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Magnitude: {{ scope.magnitude }}</li>
+            <li class="list-group-item">Buy price: {{ scope.buy_price }}</li>
+            <li class="list-group-item">Sell price: {{ scope.sell_price }}</li>
+              <li class="list-group-item">
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Weapons it can attach to
+              </button>
+              <div class="collapse" id="collapseExample">
+                  <ul class="list-group list-group-flush">
+                     {% for weapon in all_weapons %}
+                      <li class="list-group-item">
+                      <a href="{% url 'weapon_page' weapon.id %}"> {{ weapon }} ({{ weapon.additional }})</a>
+                      </li>
+                      {% endfor %}
+                  </ul>
+
+              </div>
+              </li>
+          </ul>
+          <div class="card-body">
+            <a href="{% url 'edit_scope' scope.id %}" class="card-link">Card link</a>
+            <a href="{% url 'all_weapons' %}#fat" class="btn btn-secondary ">Return <i class="fas fa-undo-alt"></i></a>
+          </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
+
+
+
+
+
+
+<div class="return_button" ></div>
 <ul class="list-group">
 
     <div class="dropdown show text-center container justify-content-center">
@@ -28,7 +71,7 @@
 </ul>
 
 
-{% endblock %}
+
 
 
   <div class="card container justify-content-center" style="width: 32rem;">

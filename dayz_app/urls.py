@@ -1,5 +1,5 @@
 from django.urls import path
-from dayz_app.views import all_weapons, new_weapon, edit_weapon, delete_weapon, sniper_rifles, weapon_page, assault_rifles, shotguns, machine_guns, scope_page
+from dayz_app.views import all_weapons, new_weapon, edit_weapon, delete_weapon, sniper_rifles, weapon_page, assault_rifles, shotguns, machine_guns, scope_page, edit_scope
 
 
 
@@ -12,9 +12,10 @@ urlpatterns = [
     path('assaultrifles/', assault_rifles, name="assault_rifles"),
     path('shotguns/', shotguns, name="shotguns"),
     path('machine_guns/', machine_guns, name="machine_guns"),
-
     path('weapon/<int:id>/', weapon_page, name="weapon_page"),
     path('scope/<int:id>/', scope_page, name="scope_page"),
+    path('edit_scope/<int:id>/', edit_scope, name="edit_scope"),
+
 
 
 

@@ -126,14 +126,12 @@
                 </ul>
 
                     <div class="tab-content" id="myTabContent">
-
-
                             <div class="tab-pane fade show active" id="assaults" role="tabpanel" aria-labelledby="assaults-tab">
-
                                 <div class="card text-center">
                                       <div class="card-body text-center">
                                        <ul class="list-group text-center">
                                            <h1>Assault rifles</h1>
+                                           <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                             {% for assault_rifle in assault_rifles %}
 
                                               <a class="btn btn-primary" data-toggle="collapse" href="#{{ assault_rifle.name }}" role="button" aria-expanded="false" aria-controls="{{ assault_rifle }}">
@@ -148,6 +146,7 @@
                                                     {% for scope in assault_rifle.ming %}
                                                     <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                     {% endfor %}
+                                                    <a class="btn btn-link" href="{% url 'weapon_page' assault_rifle.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                               </div>
                                             </div>
                                            {% endfor %}
@@ -165,7 +164,7 @@
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="card">
                                           <div class="card-body">
-                                           <ul class="list-group">
+                                           <ul class="list-group text-center">
                                                <h1>Machine guns</h1>
                                                 {% for machine_gun in machine_guns %}
 
@@ -197,7 +196,7 @@
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                         <div class="card">
                                           <div class="card-body">
-                                           <ul class="list-group">
+                                           <ul class="list-group text-center">
                                                <h1>Shotguns</h1>
                                                 {% for shotgun in shotguns %}
 
@@ -227,7 +226,7 @@
                                 <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
                                     <div class="card">
                                           <div class="card-body">
-                                           <ul class="list-group">
+                                           <ul class="list-group text-center">
                                                <h1>Sniper rifles</h1>
                                                 {% for weapon in weapons %}
 
@@ -257,7 +256,7 @@
                                         <div class="tab-pane fade" id="pistols" role="tabpanel" aria-labelledby="pistols-tab">
                                             <div class="card">
                                                   <div class="card-body">
-                                                   <ul class="list-group">
+                                                   <ul class="list-group text-center">
                                                        <h1>Pistols</h1>
                                                         {% for pistol in pistols %}
 
@@ -288,7 +287,7 @@
                                         <div class="tab-pane fade" id="rifles" role="tabpanel" aria-labelledby="rifles-tab">
                                             <div class="card">
                                                   <div class="card-body">
-                                                   <ul class="list-group">
+                                                   <ul class="list-group text-center">
                                                        <h1>Rifles</h1>
                                                         {% for rifle in rifles %}
 
@@ -319,7 +318,7 @@
                                         <div class="tab-pane fade" id="submachines" role="tabpanel" aria-labelledby="submachines-tab">
                                             <div class="card">
                                                   <div class="card-body">
-                                                   <ul class="list-group">
+                                                   <ul class="list-group text-center">
                                                        <h1>Submachine guns</h1>
                                                         {% for submachine in submachines %}
 
