@@ -7,48 +7,44 @@
 
 
 <body class="main_page">
-        <div class="container-fluid px-0">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="fixed-top">
-                            <nav id="navbar-example2" class="navbar navbar-light bg-light">
-                                <div class="bg-transparent">
-                                    <div class="container-flex">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <a class="navbar-brand" href="#">
+                  {% if user.is_authenticated %}
+                  <a href="#home">
+                      <h1 class="display-4">Hello, {{ user.username }}</h1>
+                  </a>
+                  {% else %}
+                  <a href="#home">
+                      <h1 class="display-4">Hello, Survivor</h1>
+                  </a>
+                  {% endif %}
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-                                        {% if user.is_authenticated %}
-                                        <a href="#home">
-                                            <h1 class="display-4">Hello {{ user.username }}</h1>
-                                        </a>
-                                            <a href="{% url 'logout'  %}" class="btn btn-primary">Logout <i class="fas fa-sign-out-alt"></i></a>
-                                        {% else %}
-                                            <a href="#home">
-                                                <h1 class="display-4">Hello Survivor</h1>
-                                            </a>
-                                            <a href="{% url 'login' %}" class="btn btn-primary"> Login <i class="fas fa-arrow-circle-down"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <ul class="nav nav-pills text-center">
-                                <li class="nav-item w-auto px-1">
-                                  <a class="nav-link btn btn-primary" href="#weapon_cat">Weapon categories</a>
-                                </li>
-                                    <li class="nav-item w-auto px-1">
-                                  <a class="nav-link btn btn-primary" href="#map">Interactive map</a>
-                                </li>
-                                    <li class="nav-item w-auto px-1">
-                                  <a class="nav-link btn btn-primary" href="#ammo_table">Ammo table</a>
-                                </li>
-                                </ul>
-                              <form class="form-inline">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-primary" type="submit">Search</button>
-                              </form>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#weapon_cat">Weapon categories <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#map">Interactive map</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#ammo_table">Ammo table</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+
             <div class="row">
-                    <div class="col-xs-12" id="home">
+                    <div class="col-xs" id="home">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                           <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -57,17 +53,17 @@
                           </ol>
                           <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="align-items-center justify-content-center">
                                     <img src="{% static 'images/dayz-2.jpg' %}" class="d-block mw-100" alt="...">
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="align-items-center justify-content-center">
                                     <img src="{% static 'images/dayz-1.jpg' %}" class="d-block mw-100" alt="...">
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="align-items-center justify-content-center">
                                     <img src="{% static 'images/dayz-3.jpg' %}" class="d-block mw-100" alt="...">
                                 </div>
                             </div>
@@ -86,7 +82,7 @@
                 </div>
         </div>
 
-    <div class="container-fluid px-0 my_cont">
+    <div class="container-fluid my_cont">
 
         <div id="weapon_cat" data-spy="scroll">
         </div>
@@ -132,6 +128,7 @@
                                        <ul class="list-group text-center">
                                            <h1>Assault rifles</h1>
                                            <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
+
                                             {% for assault_rifle in assault_rifles %}
 
                                               <a class="btn btn-primary" data-toggle="collapse" href="#{{ assault_rifle.name }}" role="button" aria-expanded="false" aria-controls="{{ assault_rifle }}">
@@ -353,15 +350,19 @@
     </div>
             <div id="map" data-spy="scroll">
             </div>
-                <div class="row">
-                    <div class="col-xs-12 middle" style="height:150px">
-                    </div>
-                </div>
+        <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="height:150px">
+            </div>
+        </div>
+        </div>
+
+
 
         <div class="jumbotron text-center display-4">
             Interactive map of Chernarus
         </div>
-            <div class="text-center container justify-content-center container-fluid px-0">
+            <div class="text-center container justify-content-center container-fluid">
                 <div class="row">
 
                     <div class="col-sm-12 last" style="height: 800px padding: 50px">
@@ -402,10 +403,101 @@
         <div class="jumbotron text-center display-4">
             Ammo table
         </div>
-        <div class="text-center container justify-content-center container-fluid px-0">
+        <div class="text-center container justify-content-center container-fluid">
             <div class="row">
-                <div class="col-xs-12 last" style="height: 800px padding: 50px">
-                    <style type="text/css">
+                <div class="col-sm-12" style="height: 800px padding: 50px">
+                    <div class="card text-center">
+                      <div class="card-header">
+                        Featured
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                      <div class="card-footer text-muted">
+                        2 days ago
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+                                    <ul class="nav nav-pills text-center">
+                                        <li class="nav-item w-auto px-1">
+                                    <div class="container-fluid" style="background-color:white;">
+
+                                        {% if user.is_authenticated %}
+                                        <a href="#home">
+                                            <h1 class="display-4">Hello {{ user.username }}</h1>
+                                        </a>
+                                            <a href="{% url 'logout'  %}" class="btn btn-primary">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                        {% else %}
+                                            <a href="#home">
+                                                <h1 class="display-4">Hello Survivor</h1>
+                                            </a>
+                                            <a href="{% url 'login' %}" class="btn btn-primary"> Login <i class="fas fa-arrow-circle-down"></i></a>
+                                        {% endif %}
+                                    </div>
+                                        </li>
+
+                                <li class="nav-item w-auto px-1">
+                                  <a class="nav-link btn btn-primary" href="#weapon_cat">Weapon categories</a>
+                                </li>
+                                    <li class="nav-item w-auto px-1">
+                                  <a class="nav-link btn btn-primary" href="#map">Interactive map</a>
+                                </li>
+                                    <li class="nav-item w-auto px-1">
+                                  <a class="nav-link btn btn-primary" href="#ammo_table">Ammo table</a>
+                                </li>
+                                <li class="nav-item w-auto px-1">
+                              <form class="form-inline">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                              </form>
+                                </li>
+                                        </ul>
+                            </nav>
+
+
+{% if user.is_authenticated %}
+                                        <a href="#home">
+                                            <h1 class="display-4">Hello {{ user.username }}</h1>
+                                        </a>
+                                            <a href="{% url 'logout'  %}" class="btn btn-primary">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                        {% else %}
+                                            <a href="#home">
+                                                <h1 class="display-4">Hello Survivor</h1>
+                                            </a>
+                                            <a href="{% url 'login' %}" class="btn btn-primary"> Login <i class="fas fa-arrow-circle-down"></i></a>
+                                        {% endif %}
+
+<div class="row">
+                    <div class="col-xs" style="height:150px">
+                    </div>
+                </div>
+
+
+
+
+<div id="fat" data-spy="scroll" data-target="#navbar-example2" data-offset="0"></div>
+{% static "images/background_2.jpg" %}
+{% static "images/background_2.jpg" %}
+{% static "images/background_2.jpg" %}
+
+ <style type="text/css">
                         table.tableizer-table {
                             font-size: 12px;
                             border: 1px solid #CCC;
@@ -446,22 +538,3 @@
                      <tr><td>Ammo_9x39</td><td>9x39 mm Cartridges</td><td>1</td><td>20</td><td>320</td><td>60</td><td>100</td><td>66</td><td>95</td><td>100</td><td>66</td></tr>
                      <tr><td>Ammo_9x39AP</td><td>9x39 mm Armor-piercing cartridges </td><td>1</td><td>20</td><td>320</td><td>100</td><td>100</td><td>66</td><td>95</td><td>100</td><td>66</td></tr>
                     </tbody></table>
-                </div>
-            </div>
-        </div>
-</body>
-
-
-
-
-
-
-
-
-
-{% endblock %}
-<div id="fat" data-spy="scroll" data-target="#navbar-example2" data-offset="0"></div>
-{% static "images/background_2.jpg" %}
-{% static "images/background_2.jpg" %}
-{% static "images/background_2.jpg" %}
-

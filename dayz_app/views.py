@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Weapon, Type_of_weapon, Scope
+from .models import Weapon, Type_of_weapon, Scope, Ammo
 from .forms import WeaponForm, ScopeForm
 from django.contrib.auth.decorators import login_required
 
@@ -15,6 +15,7 @@ def all_weapons(request):
     pistols = Weapon.objects.filter(additional_id=6)
     rifles = Weapon.objects.filter(additional_id=5)
     submachines = Weapon.objects.filter(additional_id=7)
+    ammos = Ammo.objects.all()
     for weapon in weapons:
         weapon.ming = Scope.objects.filter(weapon_scopes=weapon)
         scopes = Scope.objects.filter(weapon_scopes=weapon)
@@ -37,10 +38,11 @@ def all_weapons(request):
     for submachine in submachines:
         submachine.ming = Scope.objects.filter(weapon_scopes=submachine)
 
-
+    for ammo in ammos:
+        ammo.single = ammo
 
     return render(request, 'filmy.html', {'weapons' : weapons, 'wszystkie': wszystkie, 'scopes': scopes, 'shotguns': shotguns, 'machine_guns': machine_guns, 'assault_rifles': assault_rifles,
-                                          'pistols': pistols, 'rifles': rifles, 'submachines': submachines})
+                                          'pistols': pistols, 'rifles': rifles, 'submachines': submachines, 'ammos': ammos})
 
 def new_weapon(request):
     form_weapon = WeaponForm(request.POST or None, request.FILES or None)
