@@ -8,7 +8,7 @@
 
 <body class="main_page">
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-sm-top">
               <a class="navbar-brand" href="#">
                   {% if user.is_authenticated %}
                   <a href="#home">
@@ -42,9 +42,12 @@
                 </form>
               </div>
             </nav>
+            <div class="row">
+            <span class="sr-only">(current)</span></a>
+        </div>
 
             <div class="row">
-                    <div class="col-xs" id="home">
+                    <div class="col-sm" id="home">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                           <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -94,29 +97,29 @@
                     Weapon categories
                 </div>
         <div class="row">
-            <div class="col-sm-12 test_1" style="height: 800px">
+            <div class="col-sm-12" style="height: 800px">
 
-                <ul class="nav nav-tabs nav-fill hello" id="myTab" role="tablist">
+                <ul class="nav nav-pills flex-column flex-sm-row nav-justified" id="myTab">
                   <li class="nav-item">
-                      <a class="nav-link active" id="assaults-tab" data-toggle="tab" href="#assaults" role="tab" aria-controls="assaults" aria-selected="false"><h2>Assault rifles</h2></a>
+                      <a class="nav-link active" id="assaults-tab" data-toggle="tab" href="#assaults" role="tab" aria-controls="assaults" aria-selected="false"><h4>Assault rifles</h4></a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><h2>Machine guns</h2></a>
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><h4>Machine guns</h4></a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><h2>Shotguns</h2></a>
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><h4>Shotguns</h4></a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" id="contacts-tab" data-toggle="tab" href="#contacts" role="tab" aria-controls="contacts" aria-selected="false"><h2>Sniper rifles</h2></a>
+                      <a class="nav-link" id="contacts-tab" data-toggle="tab" href="#contacts" role="tab" aria-controls="contacts" aria-selected="false"><h4>Sniper rifles</h4></a>
                   </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pistols-tab" data-toggle="tab" href="#pistols" role="tab" aria-controls="pistols" aria-selected="false"><h2>Pistols</h2></a>
+                      <a class="nav-link" id="pistols-tab" data-toggle="tab" href="#pistols" role="tab" aria-controls="pistols" aria-selected="false"><h4>Pistols</h4></a>
                   </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="rifles-tab" data-toggle="tab" href="#rifles" role="tab" aria-controls="rifles" aria-selected="false"><h2>Rifles</h2></a>
+                      <a class="nav-link" id="rifles-tab" data-toggle="tab" href="#rifles" role="tab" aria-controls="rifles" aria-selected="false"><h4>Rifles</h4></a>
                   </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="submachines-tab" data-toggle="tab" href="#submachines" role="tab" aria-controls="submachines" aria-selected="false"><h2>Submachine guns</h2></a>
+                      <a class="nav-link" id="submachines-tab" data-toggle="tab" href="#submachines" role="tab" aria-controls="submachines" aria-selected="false"><h4>Submachine guns</h4></a>
                   </li>
 
                 </ul>
@@ -159,10 +162,11 @@
 
 
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="card">
-                                          <div class="card-body">
+                                    <div class="card text-center">
+                                          <div class="card-body text-center">
                                            <ul class="list-group text-center">
                                                <h1>Machine guns</h1>
+                                               <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                                 {% for machine_gun in machine_guns %}
 
                                                   <a class="btn btn-primary" data-toggle="collapse" href="#{{ machine_gun.name }}" role="button" aria-expanded="false" aria-controls="{{ machine_gun.name }}">
@@ -177,6 +181,7 @@
                                                         {% for scope in machine_gun.ming %}
                                                         <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                         {% endfor %}
+                                                        <a class="btn btn-link" href="{% url 'weapon_page' machine_gun.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                                   </div>
                                                 </div>
                                                {% endfor %}
@@ -191,10 +196,11 @@
 
 
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                        <div class="card">
-                                          <div class="card-body">
+                                        <div class="card text-center">
+                                          <div class="card-body text-center">
                                            <ul class="list-group text-center">
                                                <h1>Shotguns</h1>
+                                               <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                                 {% for shotgun in shotguns %}
 
                                                   <a class="btn btn-primary" data-toggle="collapse" href="#{{ shotgun.name }}" role="button" aria-expanded="false" aria-controls="{{ shotgun.name }}">
@@ -209,6 +215,7 @@
                                                         {% for scope in shotgun.ming %}
                                                         <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                         {% endfor %}
+                                                        <a class="btn btn-link" href="{% url 'weapon_page' shotgun.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                                   </div>
                                                 </div>
                                                {% endfor %}
@@ -221,10 +228,11 @@
                                 </div>
 
                                 <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                                    <div class="card">
-                                          <div class="card-body">
+                                    <div class="card text-center">
+                                          <div class="card-body text-center">
                                            <ul class="list-group text-center">
                                                <h1>Sniper rifles</h1>
+                                               <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                                 {% for weapon in weapons %}
 
                                                   <a class="btn btn-primary" data-toggle="collapse" href="#{{ weapon.name }}" role="button" aria-expanded="false" aria-controls="{{ weapon }}">
@@ -239,6 +247,7 @@
                                                         {% for scope in weapon.ming %}
                                                         <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                         {% endfor %}
+                                                        <a class="btn btn-link" href="{% url 'weapon_page' weapon.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                                   </div>
                                                 </div>
                                                {% endfor %}
@@ -251,10 +260,11 @@
                                     </div>
                                 </div>
                                         <div class="tab-pane fade" id="pistols" role="tabpanel" aria-labelledby="pistols-tab">
-                                            <div class="card">
-                                                  <div class="card-body">
+                                            <div class="card text-center">
+                                                  <div class="card-body text-center">
                                                    <ul class="list-group text-center">
                                                        <h1>Pistols</h1>
+                                                       <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                                         {% for pistol in pistols %}
 
                                                           <a class="btn btn-primary" data-toggle="collapse" href="#{{ pistol.name }}" role="button" aria-expanded="false" aria-controls="{{ pistol }}">
@@ -269,6 +279,7 @@
                                                                 {% for scope in pistol.ming %}
                                                                 <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                                 {% endfor %}
+                                                                <a class="btn btn-link" href="{% url 'weapon_page' pistol.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                                           </div>
                                                         </div>
                                                        {% endfor %}
@@ -282,10 +293,11 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="rifles" role="tabpanel" aria-labelledby="rifles-tab">
-                                            <div class="card">
-                                                  <div class="card-body">
+                                            <div class="card text-center">
+                                                  <div class="card-body text-center">
                                                    <ul class="list-group text-center">
                                                        <h1>Rifles</h1>
+                                                       <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                                         {% for rifle in rifles %}
 
                                                           <a class="btn btn-primary" data-toggle="collapse" href="#{{ rifle.name }}" role="button" aria-expanded="false" aria-controls="{{ rifle }}">
@@ -300,6 +312,7 @@
                                                                 {% for scope in rifle.ming %}
                                                                 <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                                 {% endfor %}
+                                                                <a class="btn btn-link" href="{% url 'weapon_page' rifle.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                                           </div>
                                                         </div>
                                                        {% endfor %}
@@ -313,10 +326,11 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="submachines" role="tabpanel" aria-labelledby="submachines-tab">
-                                            <div class="card">
-                                                  <div class="card-body">
+                                            <div class="card text-center">
+                                                  <div class="card-body text-center">
                                                    <ul class="list-group text-center">
                                                        <h1>Submachine guns</h1>
+                                                       <a class="btn btn-light" href="{% url 'new_weapon' %}" role="button">Add new <i class="fas fa-plus-square"></i></a>
                                                         {% for submachine in submachines %}
 
                                                           <a class="btn btn-primary" data-toggle="collapse" href="#{{ submachine.name }}" role="button" aria-expanded="false" aria-controls="{{ submachine }}">
@@ -331,6 +345,7 @@
                                                                 {% for scope in submachine.ming %}
                                                                 <a href="{% url 'scope_page' scope.id %}"> <h5>{{ scope }}</h5> </a>
                                                                 {% endfor %}
+                                                                <a class="btn btn-link" href="{% url 'weapon_page' submachine.id %}" role="button">Go to weapon page <i class="fas fa-angle-double-right"></i></a>
                                                           </div>
                                                         </div>
                                                        {% endfor %}
