@@ -11,7 +11,7 @@ class WeaponForm(ModelForm):
 class ScopeForm(ModelForm):
     class Meta:
         model = Scope
-        fields = ['name', 'magnitude']
+        fields = ['name', 'magnitude', 'sell_price', 'buy_price']
 
 """
 class WeaponFilterForm(django_filters.FilterSet):

@@ -12,11 +12,11 @@
               <a class="navbar-brand" href="#">
                   {% if user.is_authenticated %}
                   <a href="#home">
-                      <h1 class="display-4">Hello, {{ user.username }}</h1>
+                      <h1 class="display-4">Hello {{ user.username }}</h1>
                   </a>
                   {% else %}
                   <a href="#home">
-                      <h1 class="display-4">Hello, Survivor</h1>
+                      <h1 class="display-4">Hello Survivor</h1>
                   </a>
                   {% endif %}
               </a>
@@ -422,16 +422,51 @@
             <div class="row">
                 <div class="col-sm-12" style="height: 800px padding: 50px">
                     <div class="card text-center">
-                      <div class="card-header">
-                        Featured
-                      </div>
                       <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                      <div class="card-footer text-muted">
-                        2 days ago
+                        <p class="card-text">
+                            <style type="text/css">
+                        table.tableizer-table {
+                            font-size: 12px;
+                            border: 1px solid #CCC;
+                            font-family: Arial, Helvetica, sans-serif;
+                        }
+                        .tableizer-table td {
+                            padding: 4px;
+                            margin: 3px;
+                            border: 1px solid #CCC;
+                        }
+                        .tableizer-table th {
+                            background-color: #092B4D;
+                            color: #FFF;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <table class="tableizer-table">
+                    <thead><tr class="tableizer-firstrow"><th>DEFAULT</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody>
+                     <tr><td>Class Name</td><td>Description</td><td>ProjectilesCount</td><td>Quantity</td><td>InitSpeed</td><td>New HealthDamage</td><td>New BloodDamage</td><td>New ShockDamage</td><td>HealthDamage</td><td>BloodDamage</td><td>ShockDamage</td></tr>
+                     <tr><td>Ammo_12gaPellets</td><td>Shotgun cartridges 12 gauge</td><td>8</td><td>10</td><td>370</td><td>34</td><td>100</td><td>33</td><td>34</td><td>100</td><td>33</td></tr>
+                     <tr><td>Ammo_12gaRubberSlug</td><td>12 gauge rubber slugs</td><td>1</td><td>10</td><td>260</td><td>0</td><td>0</td><td>75</td><td>0</td><td>0</td><td>75</td></tr>
+                     <tr><td>Ammo_12gaSlug</td><td>12 gauge rifled rounds</td><td>1</td><td>10</td><td>420</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                     <tr><td>Ammo_22</td><td>.22 LR cartridges</td><td>1</td><td>50</td><td>330</td><td>18</td><td>100</td><td>25</td><td>18</td><td>100</td><td>25</td></tr>
+                     <tr><td>Ammo_308Win</td><td>.308 Winchester Rounds</td><td>1</td><td>20</td><td>740</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                     <tr><td>Ammo_308WinTracer</td><td>.308 Winchester Tracer Rounds</td><td>1</td><td>20</td><td>740</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                     <tr><td>Ammo_357</td><td>.357 Rounds</td><td>1</td><td>20</td><td>382,6</td><td>80</td><td>100</td><td>66</td><td>105,9</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_380</td><td>.380 ACP Rounds</td><td>1</td><td>35</td><td>290</td><td>21</td><td>100</td><td>33</td><td>21</td><td>100</td><td>33</td></tr>
+                     <tr><td>Ammo_45ACP</td><td>.45 ACP Rounds</td><td>1</td><td>25</td><td>260</td><td>34</td><td>100</td><td>33</td><td>34</td><td>100</td><td>33</td></tr>
+                     <tr><td>Ammo_545x39</td><td>5.45x39 mm Rounds</td><td>1</td><td>20</td><td>880</td><td>47</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_545x39Tracer</td><td>5.45x39 mm Tracer Rounds </td><td>1</td><td>20</td><td>880</td><td>47</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_556x45</td><td>5.56x45 mm Rounds</td><td>1</td><td>20</td><td>1000</td><td>55</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_556x45Tracer</td><td>5.56x45 mm Tracer Rounds</td><td>1</td><td>20</td><td>1000</td><td>55</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_762x39</td><td>7.62x39 mm Rounds</td><td>1</td><td>20</td><td>740</td><td>66</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_762x39Tracer</td><td>7.62x39 mm Tracer Rounds</td><td>1</td><td>20</td><td>740</td><td>66</td><td>100</td><td>66</td><td>55</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_762x54</td><td>7.62x54 mm R Cartridges</td><td>1</td><td>20</td><td>790</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                     <tr><td>Ammo_762x54Tracer</td><td>7.62x54 mm R Tracer cartridges</td><td>1</td><td>20</td><td>790</td><td>110</td><td>100</td><td>100</td><td>110</td><td>100</td><td>100</td></tr>
+                     <tr><td>Ammo_9x19</td><td>9x19 mm Cartridges</td><td>1</td><td>25</td><td>360</td><td>26</td><td>100</td><td>33</td><td>26</td><td>100</td><td>33</td></tr>
+                     <tr><td>Ammo_9x39</td><td>9x39 mm Cartridges</td><td>1</td><td>20</td><td>320</td><td>60</td><td>100</td><td>66</td><td>95</td><td>100</td><td>66</td></tr>
+                     <tr><td>Ammo_9x39AP</td><td>9x39 mm Armor-piercing cartridges </td><td>1</td><td>20</td><td>320</td><td>100</td><td>100</td><td>66</td><td>95</td><td>100</td><td>66</td></tr>
+                    </tbody></table>
+                        </p>
+                        <a href="#" class="btn btn-primary">Return</a>
                       </div>
                     </div>
                 </div>

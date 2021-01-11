@@ -63,7 +63,7 @@ def edit_weapon(request, id):
 
 
 
-    return render(request, 'weapon_form.html', {'form': form_weapon, 'new': False})
+    return render(request, 'weapon_form.html', {'form': form_weapon, 'new': False, 'weapon': weapon})
 
 def edit_scope(request, id):
     scope = get_object_or_404(Scope, pk=id)
