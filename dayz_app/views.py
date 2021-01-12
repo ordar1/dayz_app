@@ -17,7 +17,6 @@ def all_weapons(request):
     submachines = Weapon.objects.filter(additional_id=7)
     for weapon in weapons:
         weapon.filtered = Scope.objects.filter(weapon_scopes=weapon)
-        scopes = Scope.objects.filter(weapon_scopes=weapon)
 
     for shotgun in shotguns:
         shotgun.filtered = Scope.objects.filter(weapon_scopes=shotgun)
@@ -37,7 +36,7 @@ def all_weapons(request):
     for submachine in submachines:
         submachine.filtered = Scope.objects.filter(weapon_scopes=submachine)
 
-    return render(request, 'landing_page.html', {'weapons' : weapons, 'all': all, 'scopes': scopes, 'shotguns': shotguns, 'machine_guns': machine_guns, 'assault_rifles': assault_rifles,
+    return render(request, 'landing_page.html', {'weapons' : weapons, 'all': all, 'shotguns': shotguns, 'machine_guns': machine_guns, 'assault_rifles': assault_rifles,
                                           'pistols': pistols, 'rifles': rifles, 'submachines': submachines})
 
 def new_weapon(request):
