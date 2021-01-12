@@ -16,4 +16,3 @@ admin.site.register(Scope)
 admin.site.register(Ammo)
 admin.site.register(Type_of_ammo)
 """
-
