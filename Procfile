@@ -1,1 +1,1 @@
-web: gunicorn kurs.wsgi --log-file -
+web: gunicorn dayz_project.wsgi --log-file -
