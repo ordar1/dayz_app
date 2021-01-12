@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
     'dayz_app',
-    'rest_framework',
     'django_filters',
     'jquery'
 ]
