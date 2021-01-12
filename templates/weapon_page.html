@@ -1,4 +1,4 @@
-{% extends 'glowny.html' %}
+{% extends 'main.html' %}
 {% load bootstrap %}
 {% load static %}
 {% block tytul %} Weapon page {% endblock %}
@@ -34,15 +34,8 @@
           </ul>
           <div class="card-body text-center">
             <a href="{% url 'edit_weapon' weapon.id %}" class="btn btn-secondary card-link">Edit weapon</a>
-            <a href="{% url 'all_weapons' %}#fat" class="btn btn-secondary ">Return <i class="fas fa-undo-alt"></i></a>
+            <a href="{% url 'landing_page' %}" class="btn btn-secondary ">Return <i class="fas fa-undo-alt"></i></a>
           </div>
     </div>
 </body>
 {% endblock %}
-
-  <div class="card container justify-content-center" style="width: 32rem;">
-          <div class="card-body">
-              {{ weapon }}
-              {{ weapon.scopes }}
-        </div>
-    </div>

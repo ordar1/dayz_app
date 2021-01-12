@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('buy_price', models.PositiveIntegerField(blank=True, default='Not provided', null=True)),
                 ('description', models.TextField(blank=True, default='')),
                 ('cal', models.CharField(choices=[('.308', '.308'), ('7.62x54', '7.62x54'), ('7.62x39', '7.62x39'), ('5.56x45', '5.56x45'), ('5.45x39', '5.45x39'), ('12ga', '12ga'), ('.357', '.357'), ('9mm', '9mm'), ('.338', '.338'), ('.408', '.408'), ('.50', '.50'), ('.45 ACP', '.45 ACP')], default='Caliber not defined', max_length=60)),
-                ('picture', models.ImageField(blank=True, null=True, upload_to='plakaty')),
+                ('picture', models.ImageField(blank=True, null=True, upload_to='pictures')),
                 ('additional', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='dayz_app.type_of_weapon')),
                 ('scopes', models.ManyToManyField(blank=True, default='No scope provided', related_name='weapon_scopes', to='dayz_app.Scope')),
             ],

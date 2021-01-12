@@ -143,7 +143,7 @@ class Weapon(models.Model):
     buy_price = models.PositiveIntegerField(blank=True, null=True, default="Not provided")
     description = models.TextField(default="", blank=True)
     cal = models.CharField(choices=CALIBER_CHOICES, max_length=60, blank=False, default='Caliber not defined')
-    picture = models.ImageField(upload_to="plakaty", null=True, blank=True)
+    picture = models.ImageField(upload_to="pictures", null=True, blank=True)
     additional = models.ForeignKey(Type_of_weapon, on_delete=models.CASCADE, null=True)
     scopes = models.ManyToManyField(Scope, related_name='weapon_scopes', blank=True, default='No scope provided')
 
@@ -166,29 +166,3 @@ class Ammo(models.Model):
 
     def self_type(self):
         return "{} ({})".format(self.name, self.type)
-
-
-
-
-
-
-"""
-class Weapon_Filter(FilterSet):
-    SNIPER = 'Sniper rifle'
-    SHOTGUN = 'Shotgun'
-    ASSAULT_RIFLE = 'Assault Rifle'
-    MACHINE_GUN = 'Machine Gun'
-    WEAPON_CHOICES = [
-        (SNIPER, 'Sniper rifle'),
-        (SHOTGUN, 'Shotgun'),
-        (ASSAULT_RIFLE, 'Assault Rifle'),
-        (MACHINE_GUN, 'Machine Gun'),
-    ]
-
-    weapon = ChoiceFilter(choices=WEAPON_CHOICES)
-
-    class Meta:
-        model = Type_of_weapon
-        fields = ['weapon']
-
-"""

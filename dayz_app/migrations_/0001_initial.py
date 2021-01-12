@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(default='')),
                 ('cal', models.DecimalField(blank=True, decimal_places=3, max_digits=5, null=True)),
                 ('weapon_type', models.CharField(choices=[('Sniper rifle', 'Sniper rifle'), ('Shotgun', 'Shotgun'), ('Assault Rifle', 'Assault Rifle')], default='Weapon type not defined', max_length=60)),
-                ('picture', models.ImageField(blank=True, null=True, upload_to='plakaty')),
+                ('picture', models.ImageField(blank=True, null=True, upload_to='pictures')),
             ],
         ),
     ]

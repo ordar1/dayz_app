@@ -1,4 +1,4 @@
-{% extends 'glowny.html' %}
+{% extends 'main.html' %}
 {% load bootstrap %}
 {% load static %}
 {% block tytul %} Scope form {% endblock %}
@@ -23,7 +23,7 @@
               </form>
           </div>
         <div class="card-body text-center">
-        <a href="{% url 'all_weapons' %}#weapon_cat" class="btn btn-secondary">Return <i class="fas fa-undo-alt"></i></a>
+        <a href="{% url 'landing_page' %}#weapon_cat" class="btn btn-secondary">Return <i class="fas fa-undo-alt"></i></a>
         </div>
     </div>
 </body>
