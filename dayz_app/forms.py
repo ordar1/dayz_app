@@ -1,6 +1,5 @@
 from django.forms import ModelForm
 from .models import Weapon, Scope
-import django_filters
 
 class WeaponForm(ModelForm):
     class Meta:
@@ -12,11 +11,4 @@ class ScopeForm(ModelForm):
     class Meta:
         model = Scope
         fields = ['name', 'magnitude', 'sell_price', 'buy_price']
-
-"""
-class WeaponFilterForm(django_filters.FilterSet):
-    class Meta:
-        model = Weapon
-        fields = ['name']
-"""
 

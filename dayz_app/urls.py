@@ -11,8 +11,4 @@ urlpatterns = [
     path('scope/<int:id>/', scope_page, name="scope_page"),
     path('edit_scope/<int:id>/', edit_scope, name="edit_scope"),
 
-
-
-
-
 ]

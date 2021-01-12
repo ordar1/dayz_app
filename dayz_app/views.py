@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from .models import Weapon, Scope
 from .forms import WeaponForm, ScopeForm
 from django.contrib.auth.decorators import login_required
-
 
 
 def all_weapons(request):
@@ -15,6 +13,7 @@ def all_weapons(request):
     pistols = Weapon.objects.filter(additional_id=6)
     rifles = Weapon.objects.filter(additional_id=5)
     submachines = Weapon.objects.filter(additional_id=7)
+
     for weapon in weapons:
         weapon.filtered = Scope.objects.filter(weapon_scopes=weapon)
 
