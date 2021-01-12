@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Weapon, Type_of_weapon, Scope, Ammo, Type_of_ammo
+from .models import Weapon, Type_of_weapon, Scope
 
 # admin.site.register(Film)
 
@@ -11,7 +11,9 @@ class WeaponAdmin(admin.ModelAdmin):
 
 admin.site.register(Type_of_weapon)
 admin.site.register(Scope)
+
+"""
 admin.site.register(Ammo)
 admin.site.register(Type_of_ammo)
-
+"""
 
