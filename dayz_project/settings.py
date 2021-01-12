@@ -114,5 +114,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'my_media'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'all_weapons'
+LOGIN_REDIRECT_URL = 'landing_page'
 LOGOUT_REDIRECT_URL = 'login'
