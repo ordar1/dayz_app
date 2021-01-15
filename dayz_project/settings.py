@@ -29,8 +29,10 @@ INSTALLED_APPS = [
     'bootstrapform',
     'dayz_app',
     'django_filters',
-    'jquery'
+    'jquery',
+    'rest_framework',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

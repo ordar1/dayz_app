@@ -2,6 +2,33 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Weapon, Scope
 from .forms import WeaponForm, ScopeForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from rest_framework import permissions
+from dayz_app.serializers import UserSerializer, GroupSerializer, ScopeSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+class ScopeViewSet(viewsets.ModelViewSet):
+    serializer_class = ScopeSerializer
+
+    def get_queryset(self):
+        scopes = Scope.objects.filter(name="PU-Scope")
+        return scopes
 
 
 def all_weapons(request):
@@ -95,4 +122,3 @@ def weapon_page(request, id):
         scope.filtered = scope
 
     return render(request, 'weapon_page.html', {'weapon' : weapon, 'all_scopes' : all_scopes})
-
