@@ -5,7 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from dayz_app.serializers import UserSerializer, GroupSerializer, ScopeSerializer
+from rest_framework.response import Response
+from dayz_app.serializers import UserSerializer, GroupSerializer, ScopeSerializer, ScopeMiniSerializer, WeaponSerializer
+from django.http.response import HttpResponseNotAllowed
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -27,9 +29,47 @@ class ScopeViewSet(viewsets.ModelViewSet):
     serializer_class = ScopeSerializer
 
     def get_queryset(self):
-        scopes = Scope.objects.filter(name="PU-Scope")
+        scopes = Scope.objects.all()
         return scopes
 
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = ScopeMiniSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = ScopeSerializer(instance)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        #if request.user.is_staff:
+        scope = Scope.objects.create(name=request.data['name'],
+                                    magnitude=request.data['magnitude'],
+                                    sell_price=request.data['sell_price'],)
+        serializer = ScopeSerializer(scope, many=False)
+        return Response(serializer.data)
+        #else:
+            #return HttpResponseNotAllowed('Not allowed')
+    def update(self, request, *args, **kwargs):
+        scope = self.get_object()
+        scope.name = name=request.data['name'],
+        scope.magnitude = name=request.data['magnitude'],
+        scope.sell_price = name=request.data['sell_price'],
+        scope.save()
+
+        serializer = ScopeSerializer(scope, many=False)
+        return Response(serializer.data)
+
+class WeaponViewSet(viewsets.ModelViewSet):
+    queryset = Weapon.objects.all()
+    serializer_class = WeaponSerializer
+    def create(self, request, *args, **kwargs):
+        #if request.user.is_staff:
+        weapon = Weapon.objects.create(name=request.data['name'])
+        serializer = WeaponSerializer(weapon, many=False)
+        return Response(serializer.data)
+        
 
 def all_weapons(request):
     all = Weapon.objects.all()

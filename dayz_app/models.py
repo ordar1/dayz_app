@@ -137,8 +137,8 @@ class Weapon(models.Model):
 
     ]
     name = models.CharField(max_length=64, blank=False, unique=True)
-    sell_price = models.PositiveIntegerField(blank=False)
-    buy_price = models.PositiveIntegerField(blank=True, null=True, default="Not provided")
+    sell_price = models.PositiveIntegerField(blank=True, null=True, default="0")
+    buy_price = models.PositiveIntegerField(blank=True, null=True, default="0")
     description = models.TextField(default="", blank=True)
     cal = models.CharField(choices=CALIBER_CHOICES, max_length=60, blank=False, default='Caliber not defined')
     picture = models.ImageField(upload_to="pictures", null=True, blank=True)
